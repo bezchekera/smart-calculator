@@ -5,7 +5,7 @@ class SmartCalculator {
     this.num2=initialValue; 
     this.p=0;
     this.step;
-    this.osnov;
+    this.ost;
     this.zna=[];
     } 
     
@@ -53,13 +53,25 @@ class SmartCalculator {
    
     } 
     
+    
     pow(number) { 
-   //     if  (this.p=0) {
-    this.num1 = Math.floor(this.num1/this.num2)*Math.pow( this.num2, number);
-    //this.step=this.num2; 
-    //this.osnov=Math.floor(this.num1/this.num2)}
-   
-   // this.p= this.p+1;
+      this.zna[0]=this.num2;
+      this.p += 1;
+      this.zna[this.p]=number;
+      if  (this.p=1) {
+    this.ost=Math.floor(this.num1/this.num2); 
+    this.step=this.num2;
+     }
+
+     for (let i=this.p; i>=1; i--) 
+        {
+         this.zna[i-1] = Math.pow( this.zna[i-1], this.zna[i]);
+        }   
+     
+
+
+    this.num1 = this.ost* this.zna[0];
+  
     
     return this; 
     // your implementation 
